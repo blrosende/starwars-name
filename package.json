@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "commit": "git cz",
+    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "test": "istanbul cover -x **/*.test.js node_modules/mocha/bin/_mocha -- -R spec src/index.test.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -40,7 +41,7 @@
       "path": "node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm test"
+      "pre-commit": "npm test && npm run check-coverage"
     }
   }
 }
